@@ -1,7 +1,7 @@
 const { Router } = require("express");
 
 const adminRouter = Router();
-
+ 
 adminRouter.post("/sigup", (req, res)=>{
 
     res.json({
