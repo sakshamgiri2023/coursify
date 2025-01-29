@@ -1,24 +1,46 @@
  const {Schema, default: mongoose } = require("mongoose");
+const course = require("./Routes/course");
+ const ObjectId = mongoose.Types.ObjectId;
  
 
- const userSchema = Schema({
+ const userSchema =  new Schema({
+    email: { type: String, unqiue: true},
+    password: String,
+    firstName: String,
+    lastName: String
+ });
+
+ const adminSchma =  new Schema({
+    email: { type: String, unqiue: true},
+    password: String,
+    firstName: String,
+    lastName: String
+
+ });
+ const courseSchma =  new Schema({
+    title: String,
+    description: String,
+    imageUrl: String,
+    price: Number,
+    createId: ObjectId
 
  });
 
- const adminSchma = Schema({
-
- });
- const courseSchma = Schema({
-
- });
-
- const purchaseSchma = Schema({
+ const purchaseSchma = new Schema({
+    userId: ObjectId,
+    courseId: ObjectId
 
  });
 
- const userModule = mongoose.Module("user", userSchema);
- const adminModule = mongoose.Model("admin", adminSchma);
- const courseModule = mongoose.Model("course", courseSchma);
- const purchaseModule = mongoose.Model("purchase", purchaseSchma);
+ const userModel = mongoose.model("user", userSchema);
+ const adminModel = mongoose.model("admin", adminSchma);
+ const courseModel = mongoose.model("course", courseSchma);
+ const purchaseModel = mongoose.model("purchase", purchaseSchma);
 
- 
+
+ module.exports = {
+    userModel,
+    adminModel,
+    courseModel,
+    purchaseModel
+ }
