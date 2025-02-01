@@ -1,11 +1,9 @@
 const { Router } = require("express");
 const jwt = require("jsonwebtoken");
-const { jwt_admin_password } = require("../config")
-const { courseModel } = require("../db");
+require('dotenv').config();
+const { adminModel, courseModel } = require("../db");
 
 const adminRouter = Router();
-
-const { adminModel, courseModel } = require("../db");
 
 const { adminMiddleware } = require("../middleware/admin");
 const admin = require("../middleware/admin");
