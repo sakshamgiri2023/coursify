@@ -67,7 +67,7 @@ userRouter.get("/purchases", userMiddleware, async (req, res) => {
   });
 
   res.json({
-    purchasese,
+    purchases,
   });
 });
 
